@@ -40,20 +40,20 @@ async function main() {
       case "- DRIVERS": {
         const driver_list = data.drivers.map(
           (d) =>
-            `"- " ${d["RACE NUMBER"]} | ${d.NAME} | ${d.COUNTRY} | ${d.TEAM}`
+            `${d["RACE NUMBER"]} | ${d.NAME} | ${d.COUNTRY} | ${d.TEAM}`
         );
 
         const { select_driver } = await inquirer.prompt([
           {
-            type: "List",
+            type: "list",
             name: "select_driver",
             message: "DRIVER LIST",
-            choices: [driver_list, "- BACK"],
+            choices: [...driver_list, "- BACK"],
           },
         ]);
 
         if (driver_list) {
-          const driver_data = data.driver.find(
+          const driver_data = data.drivers.find(
             (d) =>
               `${d["RACE NUMBER"]} | ${d.NAME} | ${d.COUNTRY} | ${d.TEAM}` ===
               select_driver
@@ -87,6 +87,11 @@ async function main() {
             }
 
             case "- BIOGRAPHY": {
+              
+            }
+
+            case "- BACK": {
+
             }
           }
         } else {
