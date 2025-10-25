@@ -127,6 +127,7 @@ async function main() {
             }
           }
         }
+        break;
       }
 
       case "- TEAMS": {
