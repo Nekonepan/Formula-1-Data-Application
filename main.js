@@ -172,6 +172,11 @@ async function main() {
                   "HIGHEST GRID POSITION": team_data["HIGHEST GRID POSITION"],
                   "POLE POSITION": team_data["POLE POSITION"],
                   "WORLD CHAMPIONSHIPS": team_data["WORLD CHAMPIONSHIPS"],
+                });
+                break;
+              }
+              case "- TEAM PROFILE": {
+                console.table({
                   "FULL TEAM NAME": team_data["FULL TEAM NAME"],
                   BASE: team_data.BASE,
                   "TEAM CHIEF": team_data["TEAM CHIEF"],
@@ -182,9 +187,6 @@ async function main() {
                   "POWER UNIT": team_data["POWER UNIT"],
                   "FIRST TEAM ENTRY": team_data["FIRST TEAM ENTRY"],
                 });
-                break;
-              }
-              case "- TEAM PROFILE": {
                 break;
               }
               case "- BACK": {
