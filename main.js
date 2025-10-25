@@ -39,8 +39,7 @@ async function main() {
     switch (menu) {
       case "- DRIVERS": {
         const driver_list = data.drivers.map(
-          (d) =>
-            `${d["RACE NUMBER"]} | ${d.NAME} | ${d.COUNTRY} | ${d.TEAM}`
+          (d) => `${d["RACE NUMBER"]} | ${d.NAME} | ${d.COUNTRY} | ${d.TEAM}`
         );
 
         const { select_driver } = await inquirer.prompt([
@@ -96,8 +95,29 @@ async function main() {
                   NAME: driver_data.NAME,
                   "DATE OF BIRTH": driver_data["DATE OF BIRTH"],
                   "PLACE OF BIRTH": driver_data["PLACE OF BIRTH"],
-                  TEXT: driver_data.TEXT,
                 });
+
+                const { show_bio } = await inquirer.prompt([
+                  {
+                    type: "list",
+                    name: "show_bio",
+                    message: "BIOGRAPHY",
+                    choices: ["- SHOW FULL BIOGRAPHY", "- BACK"],
+                  },
+                ]);
+
+                switch (show_bio) {
+                  case "- SHOW FULL BIOGRAPHY": {
+                    console.log(driver_data.NAME);
+                    console.log("\nBIOGRAPHY :");
+                    console.log(driver_data.TEXT);
+                    break;
+                  }
+
+                  case "- BACK": {
+                    break;  
+                  }
+                }
                 break;
               }
 
