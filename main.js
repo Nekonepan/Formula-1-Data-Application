@@ -115,7 +115,7 @@ async function main() {
                   }
 
                   case "- BACK": {
-                    break;  
+                    break;
                   }
                 }
                 break;
@@ -130,7 +130,54 @@ async function main() {
       }
 
       case "- TEAMS": {
-        console.log("Teams");
+        const team_list = data.teams.map(
+          (t) => `${t.NAME} | ${t.DRIVER[0]} | ${t.DRIVER[1]}`
+        );
+
+        const { select_team } = await inquirer.prompt([
+          {
+            type: "list",
+            name: "select_team",
+            message: "TEAM LIST",
+            choices: [...team_list, "- BACK"],
+          },
+        ]);
+
+        if (select_team !== "- BACK") {
+          const team_data = data.teams.find(
+            (t) => `${t.NAME} | ${t.DRIVER[0]} | ${t.DRIVER[1]}` === select_team
+          );
+          await show_team_info(team_data);
+        }
+
+        async function show_team_info(team_data) {
+          while (true) {
+            const { info_type } = await inquirer.prompt([
+              {
+                type: "list",
+                name: "info_type",
+                message: `${team_data.NAME}`,
+                choices: ["- TEAM SUMMARY", "- TEAM PROFILE", "- BACK"],
+              },
+            ]);
+
+            switch(info_type) {
+              case "- TEAM SUMMARY": {
+                console.table({
+                  NAME: team_data.NAME,
+                  DRIVER: `${team_data.DRIVER[0]} | ${team_data.DRIVER[1]}`
+                })
+                break;
+              }
+              case "- TEAM PROFILE": {
+                break;
+              }
+              case "- BACK": {
+                return;
+              }
+            }
+          }
+        }
         break;
       }
 

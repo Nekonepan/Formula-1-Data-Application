@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "NAME": "McLaren",
+    "DRIVER": ["Oscar Piastri", "Lando Norris"],
+    "GRAND PRIX ENTERED": 990,
+    "TEAM POINTS": 7628.5,
+    "HIGHEST RACE FINISH": "1 (X201)",
+    "PODIUMS": 441,
+    "HIGHEST GRID POSITION": "1 (X173)",
+    "POLE POSITION": 173,
+    "WORLD CHAMPIONSHIPS": 10,
+    "FULL TEAM NAME": "McLaren Formula 1 Team",
+    "BASE": "Woking, United Kingdom",
+    "TEAM CHIEF": "Andrea Stella",
+    "TECHNICAL CHIEF": ["Peter Prodromou", "Neil Houldey"],
+    "CHASSIS": "MCL39",
+    "POWER UNIT": "Mercedes",
+    "FIRST TEAM ENTRY": 1966
+  }
+]
