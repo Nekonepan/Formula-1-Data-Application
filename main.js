@@ -200,7 +200,44 @@ async function main() {
       }
 
       case "- CIRCUITS": {
-        console.log("Circuits");
+        const circuit_list = data.circuits.map(
+          (c) => `${c.COUNTRY} | ${c.NAME}`
+        );
+
+        const { select_circuit } = await inquirer.prompt([
+          {
+            type: "list",
+            name: "select_circuit",
+            message: "CIRCUIT LIST",
+            choices: [...circuit_list, "- BACK"],
+          },
+        ]);
+
+        if (select_circuit !== "- BACK") {
+          const circuir_data = data.circuits.find(
+            (c) => `${c.COUNTRY} | ${c.NAME}` === select_circuit
+          );
+          await show_circuit_info(circuit_data);
+        }
+
+        async function show_circuit_info(circuit_data) {
+          while(true) {
+            const { info_type } = await inquirer.prompt([
+              {
+                type: "list",
+                name: "info_type",
+                message: `${circuit_data.NAME}`,
+                choices: ["- CIRCUIT DETAILS", "- BACK"],
+              },
+            ]);
+          }
+        }
+
+        switch(info_type) {
+          case "CIRCUIT DETAILS": {
+            break;
+          }
+        }
         break;
       }
 
