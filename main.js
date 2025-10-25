@@ -52,50 +52,60 @@ async function main() {
           },
         ]);
 
-        if (driver_list) {
+        if (select_driver !== "- BACK") {
           const driver_data = data.drivers.find(
             (d) =>
               `${d["RACE NUMBER"]} | ${d.NAME} | ${d.COUNTRY} | ${d.TEAM}` ===
               select_driver
           );
+          await show_driver_info(driver_data);
+        }
 
-          const { info_type } = await inquirer.prompt([
-            {
-              type: "list",
-              name: "info_type",
-              message: `${driver_data.NAME}`,
-              choices: ["- STATISTIC", "- BIOGRAPHY", "- BACK"],
-            },
-          ]);
+        async function show_driver_info(driver_data) {
+          while (true) {
+            const { info_type } = await inquirer.prompt([
+              {
+                type: "list",
+                name: "info_type",
+                message: `${driver_data.NAME}`,
+                choices: ["- STATISTIC", "- BIOGRAPHY", "- BACK"],
+              },
+            ]);
 
-          switch (info_type) {
-            case "- STATISTIC": {
-              console.table({
-                "RACE NUMBER": driver_data["RACE NUMBER"],
-                NAME: driver_data.NAME,
-                COUNTRY: driver_data.COUNTRY,
-                TEAM: driver_data.TEAM,
-                "GRAND PRIX ENTERED": driver_data["GRAND PRIX ENTERED"],
-                "CAREER POINTS": driver_data["CAREER POINTS"],
-                "HIGHEST RACE FINISH": driver_data["HIGHEST RACE FINISH"],
-                PODIUMS: driver_data.PODIUMS,
-                "HIGHEST GRID POSITION": driver_data["HIGHEST GRID POSITION"],
-                "POLE POSITION": driver_data["POLE POSITION"],
-                "WORLD CHAMPIONSHIPS": driver_data["WORLD CHAMPIONSHIPS"],
-                DNFs: driver_data.DNFs,
-              });
-            }
+            switch (info_type) {
+              case "- STATISTIC": {
+                console.table({
+                  "RACE NUMBER": driver_data["RACE NUMBER"],
+                  NAME: driver_data.NAME,
+                  COUNTRY: driver_data.COUNTRY,
+                  TEAM: driver_data.TEAM,
+                  "GRAND PRIX ENTERED": driver_data["GRAND PRIX ENTERED"],
+                  "CAREER POINTS": driver_data["CAREER POINTS"],
+                  "HIGHEST RACE FINISH": driver_data["HIGHEST RACE FINISH"],
+                  PODIUMS: driver_data.PODIUMS,
+                  "HIGHEST GRID POSITION": driver_data["HIGHEST GRID POSITION"],
+                  "POLE POSITION": driver_data["POLE POSITION"],
+                  "WORLD CHAMPIONSHIPS": driver_data["WORLD CHAMPIONSHIPS"],
+                  DNFs: driver_data.DNFs,
+                });
+                break;
+              }
 
-            case "- BIOGRAPHY": {
-              
-            }
+              case "- BIOGRAPHY": {
+                console.table({
+                  NAME: driver_data.NAME,
+                  "DATE OF BIRTH": driver_data["DATE OF BIRTH"],
+                  "PLACE OF BIRTH": driver_data["PLACE OF BIRTH"],
+                  TEXT: driver_data.TEXT,
+                });
+                break;
+              }
 
-            case "- BACK": {
-
+              case "- BACK": {
+                return;
+              }
             }
           }
-        } else {
-          return;
         }
       }
 
