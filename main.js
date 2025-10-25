@@ -161,12 +161,27 @@ async function main() {
               },
             ]);
 
-            switch(info_type) {
+            switch (info_type) {
               case "- TEAM SUMMARY": {
                 console.table({
                   NAME: team_data.NAME,
-                  DRIVER: `${team_data.DRIVER[0]} | ${team_data.DRIVER[1]}`
-                })
+                  DRIVER: `${team_data.DRIVER.join(" | ")}`,
+                  "GRAND PRIX ENTERED": team_data["GRAND PRIX ENTERED"],
+                  "HIGHEST RACE FINISH": team_data["HIGHEST RACE FINISH"],
+                  PODIUMS: team_data.PODIUMS,
+                  "HIGHEST GRID POSITION": team_data["HIGHEST GRID POSITION"],
+                  "POLE POSITION": team_data["POLE POSITION"],
+                  "WORLD CHAMPIONSHIPS": team_data["WORLD CHAMPIONSHIPS"],
+                  "FULL TEAM NAME": team_data["FULL TEAM NAME"],
+                  BASE: team_data.BASE,
+                  "TEAM CHIEF": team_data["TEAM CHIEF"],
+                  "TECHNICAL CHIEF": `${team_data["TECHNICAL CHIEF"].join(
+                    " | "
+                  )}`,
+                  CHASSIS: team_data.CHASSIS,
+                  "POWER UNIT": team_data["POWER UNIT"],
+                  "FIRST TEAM ENTRY": team_data["FIRST TEAM ENTRY"],
+                });
                 break;
               }
               case "- TEAM PROFILE": {
