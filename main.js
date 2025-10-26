@@ -214,14 +214,14 @@ async function main() {
         ]);
 
         if (select_circuit !== "- BACK") {
-          const circuir_data = data.circuits.find(
+          const circuit_data = data.circuits.find(
             (c) => `${c.COUNTRY} | ${c.NAME}` === select_circuit
           );
           await show_circuit_info(circuit_data);
         }
 
         async function show_circuit_info(circuit_data) {
-          while(true) {
+          while (true) {
             const { info_type } = await inquirer.prompt([
               {
                 type: "list",
@@ -230,12 +230,25 @@ async function main() {
                 choices: ["- CIRCUIT DETAILS", "- BACK"],
               },
             ]);
-          }
-        }
 
-        switch(info_type) {
-          case "CIRCUIT DETAILS": {
-            break;
+            switch (info_type) {
+              case "- CIRCUIT DETAILS": {
+                console.table({
+                  COUNTRY: circuit_data.COUNTRY,
+                  NAME: circuit_data.NAME,
+                  "FIRST GRAND PRIX": circuit_data["FIRST GRAND PRIX"],
+                  "CIRCUIT LENGTH": circuit_data["CIRCUIT LENGTH"],
+                  "NUMBER OF LAPS": circuit_data["NUMBER OF LAPS"],
+                  "RACE DISTANCE": circuit_data["RACE DISTANCE"],
+                  "LAP RECORD": circuit_data["LAP RECORD"],
+                });
+                break;
+              }
+
+              case "- BACK": {
+                return;
+              }
+            }
           }
         }
         break;
