@@ -4,7 +4,7 @@
   },
   "name": "formula-1-data-application",
   "version": "1.0.0",
-  "description": "",
+  "description": "In Development",
   "main": "main.js",
   "devDependencies": {},
   "scripts": {
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/Nekonepan/Formula-1-Data-Application.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nekonepan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Nekonepan/Formula-1-Data-Application/issues"
