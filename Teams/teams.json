@@ -48,7 +48,7 @@
     "FULL TEAM NAME": "Mercedes-AMG PETRONAS Formula One Team",
     "BASE": "Brackley, United Kingdom",
     "TEAM CHIEF": "Toto Wolff",
-    "TECHNICAL CHIEF": "James Allison",
+    "TECHNICAL CHIEF": ["James Allison", ""],
     "CHASSIS": "W16",
     "POWER UNIT": "Mercedes",
     "FIRST TEAM ENTRY": 1970
@@ -66,7 +66,7 @@
     "FULL TEAM NAME": "Oracle Red Bull Racing",
     "BASE": "Milton Keynes, United Kingdom",
     "TEAM CHIEF": "Laurent Mekies",
-    "TECHNICAL CHIEF": "Pierre Waché",
+    "TECHNICAL CHIEF": ["Pierre Waché", ""],
     "CHASSIS": "RB21",
     "POWER UNIT": "Honda RBPT",
     "FIRST TEAM ENTRY": 1997
